@@ -1,0 +1,28 @@
+# Issues in the Original YAML:
+# Incorrect Label in the Pod Template:
+#     In the template.metadata.labels section, the label key name is used instead of app. 
+#     The selector.matchLabels refers to app: my-app, so the label in the pod template should match 
+#     the selector key.
+
+# The YAML indentation is inconsistent, which will cause parsing errors.
+
+# corrected code is provided below: 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broken-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app  # Fixed label to match the selector
+    spec:
+      containers:
+        - name: nginx
+          ports:
+            - containerPort: 80
