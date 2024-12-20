@@ -1,0 +1,29 @@
+# The issues in the file include indentation errors and incorrect service declaration
+
+# YAML is indentation-sensitive. The services key should have consistent indentation. 
+# The flask-app and redis services must be aligned correctly under the services key.
+
+# The flask-app service and redis service should be listed correctly under the services block
+
+# In YAML, lists should use hyphens (-) instead of square brackets
+# version: "2"
+# service:
+#     flask-app:
+#        build: .
+#        ports: ["5000:5000"] 
+#     redis
+#        image: redis:alpine
+
+
+
+# The corrected code 
+version: "2"
+services:
+  flask-app:
+    build: .
+    ports:
+      - "5000:5000"
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
